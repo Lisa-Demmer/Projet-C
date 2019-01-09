@@ -4,7 +4,7 @@ Projet de DUT Informatique (2016/2017)
 * Un programme qui permet de résoudre des grilles faciles de sudoku
 * Voir [Ici](https://github.com/Haeliss/Projet-C/blob/master/AlgoC_Projet_16_17.pdf)
 
-#### Technologies utilisées:
+#### Technologie utilisée:
 * C
 
 #### A installer
