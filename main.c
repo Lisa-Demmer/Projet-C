@@ -87,13 +87,13 @@ Zone(i,j, &min_l,&max_l,&min_c,&max_c);   //Appel de la fonction qui définie la 
 }
 
 
-void lireGrille(int **G){   //Initialise la grille G avec le contenu du fichier .txt
+void lireGrille(int **G, char *file) {   //Initialise la grille G avec le contenu du fichier .txt
     FILE* grille=NULL, *f_out;       // La grille ne contient que des 0(espaces vides)
     int i,j,k, noL,noC,nombre,verif=0;  //noL : numéro de la ligne et noC : numéro de la colonne
     for (j=0;j<9;j++){
     for (k=0;k<9;k++){
         G[j][k]=0;}}    //initialisation de la grille à 0
-    grille = fopen("g1.txt", "r+");      // la variable grille prend le contenu du fichier .txt
+    grille = fopen(file, "r+");      // la variable grille prend le contenu du fichier .txt
     if (grille != NULL){
         for (i=0; verif!=EOF; i++){
             verif=fscanf(grille,"%d%d%d",&noL,&noC,&nombre);    //verif : vérifie si on est arrivé ou non à la fin du fichier
@@ -198,8 +198,8 @@ void FermerGrille(struct Candidat **C, int **G, struct Case *O){ //Ferme la gril
                     }}
     }
 
-int main() {
-  int i,j,sol, ligne=9, col=9,test;
+int main(int argc, char *argv[]) {
+  int i,j,sol, ligne=9, col=9;
 /*Initialisation de la table G*/
   int **G=malloc(sizeof(*G)*ligne);
   for (i=0;i<ligne;i++)
@@ -211,7 +211,7 @@ int main() {
   for (i=0;i<ligne;i++)
     C[i]=malloc(sizeof(**C)*col);
 /*----------------------------*/
-  lireGrille(G);
+  lireGrille(G, argv[1]);
   ecrireGrille(G);
   printf("\n");
   initTab(O,C,G);
